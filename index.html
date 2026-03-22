@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CORPORATE BHASHA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>CORPORATE BHASHA</h2>
+
+<label>Enter your honest message:</label>
+<textarea id="inputText"></textarea>
+
+<label>Select Tone:</label>
+<select id="tone">
+<option value="intern">Intern</option>
+<option value="manager">Manager</option>
+<option value="ceo">CEO</option>
+</select>
+
+<button onclick="translateText()">Translate</button>
+
+<label>Corporate version:</label>
+<textarea id="outputText"></textarea>
+
+<p id="status"></p>
+
+<button onclick="copyText()">Copy</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
