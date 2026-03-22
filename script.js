@@ -8,19 +8,17 @@ document.getElementById("status").innerText = "Thinking...";
 
 try{
 
-let response = await fetch("https://corporate-bhasha.onrender.com/translate",{
+let response = await fetch("https://corporate-bhasha.onrender.com/translate", {
 
-method:"POST",
+method: "POST",
 
-headers:{
-"Content-Type":"application/json"
+headers: {
+"Content-Type": "application/json"
 },
 
 body: JSON.stringify({
-
 text: input,
 tone: tone
-
 })
 
 });
@@ -29,18 +27,17 @@ let data = await response.json();
 
 document.getElementById("outputText").value = data.result;
 
-document.getElementById("status").innerText = "Done ✔";
+document.getElementById("status").innerText = "Done";
 
 }catch(error){
 
-document.getElementById("status").innerText = "Error";
-
 console.log(error);
 
-}
+document.getElementById("status").innerText = "Error connecting to AI";
 
 }
 
+}
 
 
 function copyText(){
