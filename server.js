@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import OpenAI from "openai";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -9,6 +11,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(__dirname));
 
 const client = new OpenAI({
 apiKey: process.env.OPENAI_API_KEY
@@ -27,11 +34,6 @@ Tone: ${tone}
 
 Text:
 "${text}"
-
-Rules:
-- keep meaning same
-- sound professional
-- slightly polite corporate tone
 `;
 
 const response = await client.chat.completions.create({
@@ -48,9 +50,7 @@ content:prompt
 });
 
 res.json({
-
 result: response.choices[0].message.content
-
 });
 
 }catch(error){
@@ -58,9 +58,7 @@ result: response.choices[0].message.content
 console.log(error);
 
 res.status(500).json({
-
-error:"AI connection failed"
-
+error:"AI failed"
 });
 
 }
@@ -69,6 +67,6 @@ error:"AI connection failed"
 
 app.listen(3000,()=>{
 
-console.log("Server running on http://localhost:3000");
+console.log("Server running");
 
 });
