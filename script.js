@@ -8,7 +8,7 @@ document.getElementById("status").innerText = "Thinking...";
 
 try{
 
-let response = await fetch("http://localhost:3000/translate",{
+let response = await fetch("https://ai-translator.onrender.com/translate"{
 
 method:"POST",
 
